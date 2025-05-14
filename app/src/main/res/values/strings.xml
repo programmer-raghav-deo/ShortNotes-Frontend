@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Short Notes</string>
+    <string name="title_activity_browse_by_subject">BrowseBySubject</string>
+    <string name="title_activity_chapter_display">ChapterDisplay</string>
+    <string name="title_activity_display_file">DisplayFile</string>
+    <string name="title_activity_pdf_display">PdfDisplay</string>
+</resources>
