@@ -63,7 +63,7 @@ fun ChapterDisplayScreen(file_path: String) {
 
         loading = true
 
-        val connection: HttpURLConnection = URL("http://192.168.1.4:8080/get_file").openConnection() as HttpURLConnection
+        val connection: HttpURLConnection = URL("http://${Constants.Companion.SERVER_ADDRESS}:${Constants.Companion.SERVER_PORT}/get_file").openConnection() as HttpURLConnection
         connection.requestMethod = "POST"
         connection.setRequestProperty("Content-Type", "text/plain")
         connection.doInput = true

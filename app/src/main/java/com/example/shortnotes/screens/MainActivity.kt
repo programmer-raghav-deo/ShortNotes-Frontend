@@ -8,6 +8,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -37,14 +39,18 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
+import com.example.shortnotes.R
 import com.example.shortnotes.components.TopBar
 import com.example.shortnotes.components.get_alert
 import com.example.shortnotes.networking.get_network_status
@@ -77,16 +83,20 @@ fun getIntentSubject(subject: String, context: Context): Intent {
 }
 
 @Composable
-fun getCard(subject: String, context: Context) {
+fun getCard(subject: String, context: Context, image_id: Int) {
     Card(onClick = {
         startActivity(context, getIntentSubject(subject, context), null)
         },
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
         modifier = Modifier
             .padding(5.dp)
-            .size(width = 112.dp, height = 80.dp),
+            .size(width = 112.dp, height = 100.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.secondary)) {
-        Text(text = subject, fontSize = 20.sp, modifier = Modifier.padding(vertical = 10.dp, horizontal = 8.dp), textAlign = TextAlign.Center)
+        Column (modifier = Modifier.align(Alignment.CenterHorizontally), verticalArrangement = Arrangement.Center) {
+            Image(painter = painterResource(image_id), contentDescription = "Physics logo", modifier = Modifier.size(height = 60.dp, width = 65.dp).align(Alignment.CenterHorizontally).padding(vertical = 6.dp))
+            Text(text = subject, fontSize = 20.sp, modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp), textAlign = TextAlign.Center)
+        }
+
     }
 }
 
@@ -96,7 +106,7 @@ fun App() {
     val context: Context = LocalContext.current
     var query: String by remember { mutableStateOf("") }
     var active_search: Boolean by remember { mutableStateOf(false) }
-    val map: Map<String, String> = mapOf("area under curve" to "Maths/calculus/", "fluids" to "Physics/mechanics", "general conics" to "Maths/coordinate geometry", "kinetic theory of gases" to "Physics/mechanics", "logarithm" to "Maths", "logic" to "Maths", "modulus" to "Maths", "periodic classification of elements" to "Chemistry/inorganic chemistry", "solid state" to "Chemistry/physical chemistry", "solution of triangles" to "Maths/trigonometry", "trigonometric equations" to "Maths/trigonometry", "3D geometry" to "Maths/3D", "alternating current" to "Physics/electrodynamics", "binomial theorem" to "Maths/algebra", "capacitors" to "Physics/electrodynamics", "centre of mass and conservation of linear momentum" to "Physics/mechanics",  "chemical bonding" to "Chemistry/inorganic chemistry", "chemical kinetics" to "Chemistry/physical chemistry", "circles" to "Maths/coordinate geometry", "complex numbers" to "Maths/algebra", "current electricity" to "Physics/electrodynamics", "definite integeration" to "Maths/calculus", "determinants" to "Maths/algebra", "differential equations" to "Maths/calculus", "electrochemistry" to "Physics/electrodynamics", "electromagnetic induction" to "Physics/electrodynamics", "electromagnetic waves" to "Physics/electrodynamics", "electrostatics" to "Physics/electrodynamics", "ellipse" to "Maths/coordinate geometry", "gaseous state" to "Chemistry/physical chemistry", "gravitation" to "Physics/mechanics", "heat transfer" to "Physics/heat", "hyperbola" to "Maths/coordinate geometry", "indefinite integeration" to "Maths/calculus", "inverse trigonometric functions" to "Maths/trigonometry", "ionic equillibrium" to "Chemistry/physical chemistry", "limits" to "Maths/calculus", "liquid solution" to "Chemistry/physical chemistry", "mechanical properties of solids" to "Physics/mechanics", "modern physics" to "Physics", "parabola" to "Maths/coordinate geometry", "permutation and combination" to "Maths/algebra", "probability" to "Maths", "quadratic equations" to "Maths/algebra", "ray optics" to "Physics/optics", "simple harmonic motion" to "Physics/mechanics", "statistics" to "Maths", "straight lines" to "Maths/coordinate geometry", "thermal properties of matter" to "Physics/heat", "thermodynamics(chemistry)" to "Chemistry/physical chemistry", "thermodynamics(physics)" to "Physics/heat", "trigonometric ratios" to "Maths/trigonometry", "vectors" to "Maths/3D", "wave optics" to "Physics/optics", "waves" to "Physics/mechanics")
+    val map: Map<String, String> = mapOf("area under curve" to "Maths/calculus", "fluids" to "Physics/mechanics", "general conics" to "Maths/coordinate geometry", "kinetic theory of gases" to "Physics/mechanics", "logarithm" to "Maths", "logic" to "Maths", "modulus" to "Maths", "periodic classification of elements" to "Chemistry/inorganic chemistry", "solid state" to "Chemistry/physical chemistry", "solution of triangles" to "Maths/trigonometry", "trigonometric equations" to "Maths/trigonometry", "3D geometry" to "Maths/3D", "alternating current" to "Physics/electrodynamics", "binomial theorem" to "Maths/algebra", "capacitors" to "Physics/electrodynamics", "centre of mass and conservation of linear momentum" to "Physics/mechanics",  "chemical bonding" to "Chemistry/inorganic chemistry", "chemical kinetics" to "Chemistry/physical chemistry", "circles" to "Maths/coordinate geometry", "complex numbers" to "Maths/algebra", "current electricity" to "Physics/electrodynamics", "definite integeration" to "Maths/calculus", "determinants" to "Maths/algebra", "differential equations" to "Maths/calculus", "electrochemistry" to "Physics/electrodynamics", "electromagnetic induction" to "Physics/electrodynamics", "electromagnetic waves" to "Physics/electrodynamics", "electrostatics" to "Physics/electrodynamics", "ellipse" to "Maths/coordinate geometry", "gaseous state" to "Chemistry/physical chemistry", "gravitation" to "Physics/mechanics", "heat transfer" to "Physics/heat", "hyperbola" to "Maths/coordinate geometry", "indefinite integeration" to "Maths/calculus", "inverse trigonometric functions" to "Maths/trigonometry", "ionic equillibrium" to "Chemistry/physical chemistry", "limits" to "Maths/calculus", "liquid solution" to "Chemistry/physical chemistry", "mechanical properties of solids" to "Physics/mechanics", "modern physics" to "Physics", "parabola" to "Maths/coordinate geometry", "permutation and combination" to "Maths/algebra", "probability" to "Maths", "quadratic equations" to "Maths/algebra", "ray optics" to "Physics/optics", "simple harmonic motion" to "Physics/mechanics", "statistics" to "Maths", "straight lines" to "Maths/coordinate geometry", "thermal properties of matter" to "Physics/heat", "thermodynamics(chemistry)" to "Chemistry/physical chemistry", "thermodynamics(physics)" to "Physics/heat", "trigonometric ratios" to "Maths/trigonometry", "vectors" to "Maths/3D", "wave optics" to "Physics/optics", "waves" to "Physics/mechanics")
     val chapter_names: MutableList<String> = mutableListOf("area under curve", "fluids", "general conics", "kinetic theory of gases", "logarithm", "logic", "modulus", "periodic classification of elements", "solid state", "solution of triangles", "trigonometric equations", "3D geometry", "alternating current", "binomial theorem", "capacitors", "centre of mass and conservation of linear momentum", "chemical bonding", "chemical kinetics", "circles", "complex numbers", "current electricity", "definite integeration", "determinants", "differential equations", "electrochemistry", "electromagnetic induction", "electromagnetic waves", "electrostatics", "ellipse", "gaseous state", "gravitation", "heat transfer", "hyperbola", "indefinite integeration", "inverse trigonometric functions", "ionic equillibrium", "limits", "liquid solution", "mechanical properties of solids", "modern physics", "parabola", "permutation and combination", "probability", "quadratic equations", "ray optics", "simple harmonic motion", "statistics", "straight lines", "thermal properties of matter", "thermodynamics(chemistry)", "thermodynamics(physics)", "trigonometric ratios", "vectors", "wave optics", "waves")
     var display_list: MutableList<String> = remember { mutableStateListOf() }
     display_list = chapter_names
@@ -206,11 +216,12 @@ fun App() {
 
                 Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
 
-                    getCard(subject = "Physics", context = context)
+                    getCard(subject = "Physics", context = context, image_id = R.drawable.i1)
 
-                    getCard(subject = "Chemistry", context = context)
+                    getCard(subject = "Chemistry", context = context, image_id = R.drawable.i2)
 
-                    getCard(subject = "Maths", context = context)
+                    getCard(subject = "Maths", context = context, image_id = R.drawable.i3)
+
 
             }
 

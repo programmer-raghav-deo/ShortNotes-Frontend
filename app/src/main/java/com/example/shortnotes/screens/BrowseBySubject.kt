@@ -81,7 +81,7 @@ fun BrowseBySubjectScreen(subject: String) {
                 loading = true
                 url_stack.removeAt(url_stack.size - 1)
 
-                val connection: HttpURLConnection = URL("http://192.168.1.4:8080/browse_by_subject").openConnection() as HttpURLConnection
+                val connection: HttpURLConnection = URL("http://${Constants.Companion.SERVER_ADDRESS}:${Constants.Companion.SERVER_PORT}/browse_by_subject").openConnection() as HttpURLConnection
                 connection.requestMethod = "POST"
                 connection.setRequestProperty("Content-Type", "text/plain")
                 connection.setRequestProperty("Accept", "application/json")
@@ -138,7 +138,7 @@ fun BrowseBySubjectScreen(subject: String) {
 
         loading = true
 
-        val connection: HttpURLConnection = URL("http://192.168.1.4:8080/browse_by_subject").openConnection() as HttpURLConnection
+        val connection: HttpURLConnection = URL("http://${Constants.Companion.SERVER_ADDRESS}:${Constants.Companion.SERVER_PORT}/browse_by_subject").openConnection() as HttpURLConnection
         connection.requestMethod = "POST"
         connection.setRequestProperty("Content-Type", "text/plain")
         connection.setRequestProperty("Accept", "application/json")
@@ -215,7 +215,7 @@ fun BrowseBySubjectScreen(subject: String) {
                                             loading = true
                                             url_stack.removeAt(url_stack.size - 1)
 
-                                            val connection: HttpURLConnection = URL("http://192.168.1.4:8080/browse_by_subject").openConnection() as HttpURLConnection
+                                            val connection: HttpURLConnection = URL("http://${Constants.Companion.SERVER_ADDRESS}:${Constants.Companion.SERVER_PORT}/browse_by_subject").openConnection() as HttpURLConnection
                                             connection.requestMethod = "POST"
                                             connection.setRequestProperty("Content-Type", "text/plain")
                                             connection.setRequestProperty("Accept", "application/json")
@@ -287,7 +287,7 @@ fun BrowseBySubjectScreen(subject: String) {
                                     loading = true
                                     url_stack.add("$subject/${folder_list[index]}")
 
-                                    val connection: HttpURLConnection = URL("http://192.168.1.3:8080/browse_by_subject").openConnection() as HttpURLConnection
+                                    val connection: HttpURLConnection = URL("http://${Constants.Companion.SERVER_ADDRESS}:${Constants.Companion.SERVER_PORT}/browse_by_subject").openConnection() as HttpURLConnection
                                     connection.requestMethod = "POST"
                                     connection.setRequestProperty("Content-Type", "text/plain")
                                     connection.setRequestProperty("Accept", "application/json")
