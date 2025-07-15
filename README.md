@@ -12,7 +12,8 @@ Note : This repository only hosts the frontend code. Link for github repository 
 
 # Demonstration of software
 
-![demonstration](https://github.com/user-attachments/assets/e049d482-78f3-4508-8bc1-f8b5b7cb9caa)
+
+https://github.com/user-attachments/assets/e049d482-78f3-4508-8bc1-f8b5b7cb9caa
 
 
 # Screenshots of software
@@ -33,12 +34,7 @@ git clone https://github.com/programmer-raghav-deo/ShortNotes-Frontend.git
 
 Step 2 : Configure Constants.kt file located in ShortNotes-Frontend/app/src/main/java/com/example/shortnotes  
 Set SERVER_ADDRESS variable and SERVER_PORT variable to appropriate values  
-
-<img width="851" height="192" alt="image" src="https
-
-https://github.com/user-attachments/assets/d26e5590-01dd-4a78-a679-c26390fa218d
-
-://github.com/user-attachments/assets/274cb384-d73f-46b6-a793-d29ffad14143" />
+<img width="851" height="192" alt="image" src="https://github.com/user-attachments/assets/274cb384-d73f-46b6-a793-d29ffad14143" />
 
 Step 3 : Build the apk
 
